@@ -56,7 +56,6 @@ var Surface = function()
 		initControls();
 		initRenderer();
 		initWorldObjects();
-		initLight();
 		initScene();
 
 		addEventListeners();
@@ -69,8 +68,6 @@ var Surface = function()
 	*/
 	function animate() {
 		requestAnimationFrame( animate );
-
-		modify();
 
 		// В переменной delta получаем время, за которое выполнилась функция update
 		var time = performance.now();
@@ -136,13 +133,7 @@ var Surface = function()
 		}
 		scene.add(room.getObject());
 		enable_room = true;
-	}
-	
-	/**
-	*	Тут инициализируем свет
-	*/
-	function initLight() {
-	}
+	};
 	
 	/**
 	*	Создаем сцену и запихиваем в нее все, что нужно
@@ -155,19 +146,11 @@ var Surface = function()
 	}
 
 	/**
-	*	Здесь обновляем модели. Запихваем сюда все трудоемкие операции.
-	*   Время выполнения этой функции будет засекаться для
-	*   движений объектов в зависимоисти от тормозов
-	*/
-	function modify() {
-
-	}
-
-	/**
 	*	Тут двигаем все, что зависит от времени выполнения такта (delta)
 	*/
 	function update(delta) {
 		controls.update(delta);
+		controls.collision(room.getFloorObjects());
 	}
 
 	function addEventListeners() {
@@ -191,5 +174,5 @@ function controlPage($scope){
 	$scope.room = 0;
 	$scope.change = function(){
 		surface.reInitWorld($scope.room);
-	}
+	};
 }
