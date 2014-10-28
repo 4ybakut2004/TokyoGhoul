@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html ng-app> 
+	<head> 
+		<title>Noragami</title>
+		<link rel="stylesheet" href="css/main.css" media="screen" />
+		<script src="library/jquery.js"></script>
+		<script src="library/three.js"></script> 
+		<script src="library/angular.min.js"></script>
+		
+		<script src="js/surface.js" charset="utf-8"></script>
+		<script src="js/sky_box.js"></script>
+		<script src="js/room/mirror_room.js"></script>
+		<script src="js/room/torture_room.js"></script>
+		<script src="js/detector.js"></script>
+		<script src="js/overview_controls.js"></script>
+		<script src="js/resources.js"></script>
+	</head> 
+	<body ng-controller="controlPage">
+		<div class="panelControl">
+			<form name="myForm">
+				<input type="radio" ng-model="room" value="1" ng-change="change()">Mirror room<br/>
+				<input type="radio" ng-model="room" value="2" ng-change="change()">Torture room<br/>
+				<tt>room = {{room}}</tt><br/>
+			 </form>
+		</div>
+	</body> 
+</html>
